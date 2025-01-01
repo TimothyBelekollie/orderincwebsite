@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('blog_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); // Name of the category
+            $table->boolean('is_active')->default(true); // Whether the category is active
             $table->timestamps();
         });
     }

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('aboutuses', function (Blueprint $table) {
             $table->id();
+            $table->string('title'); // Section title
+            $table->text('description'); // Detailed description
+            $table->string('image_path')->nullable(); // Path for an optional image
+            $table->text('vision')->nullable(); // Vision statement
+            $table->text('mission')->nullable(); // Mission statement
+            $table->text('values')->nullable(); // Core values
+            $table->boolean('is_active')->default(true); // Status to enable/disable the section
             $table->timestamps();
         });
     }
