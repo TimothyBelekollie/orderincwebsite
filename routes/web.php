@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\AboutusController;
 use App\Http\Controllers\backend\BlogCategoryController;
 use App\Http\Controllers\backend\BlogController;
+use App\Http\Controllers\backend\CarouselController;
+use App\Http\Controllers\backend\ClientController;
+use App\Http\Controllers\backend\ContactusMessageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,7 +24,7 @@ Route::middleware([
 
     // Backend Aboutus Routes
 
-Route::prefix('about-us')->group(function () {
+Route::prefix('admin/about-us')->group(function () {
     Route::get('/', [AboutusController::class, 'index'])->name('backend.aboutus.index'); // List all records
     Route::get('/create', [AboutusController::class, 'create'])->name('backend.boutus.create'); // Show form to create a new record
     Route::post('/', [AboutusController::class, 'store'])->name('backend.aboutus.store'); // Store a new record
@@ -34,7 +37,7 @@ Route::prefix('about-us')->group(function () {
 
 //Backend BlogCategory Routes
 
-Route::prefix('blog-categories')->group(function () {
+Route::prefix('admin/blog-categories')->group(function () {
     Route::get('/', [BlogCategoryController::class, 'index'])->name('backend.blogcategories.index'); // List all categories
     Route::get('/create', [BlogCategoryController::class, 'create'])->name('backend.blogcategories.create'); // Show form to create a new category
     Route::post('/', [BlogCategoryController::class, 'store'])->name('backend.blogcategories.store'); // Store a new category
@@ -46,7 +49,7 @@ Route::prefix('blog-categories')->group(function () {
 
 
 //Backend Blog Routes
-Route::prefix('blogs')->group(function () {
+Route::prefix('admin/blogs')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('backend.blogs.index'); // List all blogs
     Route::get('/create', [BlogController::class, 'create'])->name('backend.blogs.create'); // Show form to create a new blog
     Route::post('/', [BlogController::class, 'store'])->name('backend.blogs.store'); // Store a new blog
@@ -56,4 +59,45 @@ Route::prefix('blogs')->group(function () {
     Route::delete('/{id}', [BlogController::class, 'destroy'])->name('backend.blogs.destroy'); // Delete a blog
 });
 
+//Backend Carousel Routes
+Route::prefix('admin/carousels')->group(function () {
+    Route::get('/', [CarouselController::class, 'index'])->name('backend.carousels.index'); // List all carousels
+    Route::get('/create', [CarouselController::class, 'create'])->name('backend.carousels.create'); // Show form to create a new carousel
+    Route::post('/', [CarouselController::class, 'store'])->name('backend.carousels.store'); // Store a new carousel
+    Route::get('/{id}', [CarouselController::class, 'show'])->name('backend.carousels.show'); // Show a single carousel
+    Route::get('/{id}/edit', [CarouselController::class, 'edit'])->name('backend.carousels.edit'); // Show form to edit a carousel
+    Route::put('/{id}', [CarouselController::class, 'update'])->name('backend.carousels.update'); // Update a carousel
+    Route::delete('/{id}', [CarouselController::class, 'destroy'])->name('backend.carousels.destroy'); // Delete a carousel
+});
+
+
+//Backend Client Routes
+Route::prefix('admin/clients')->group(function () {
+    Route::get('/', [ClientController::class, 'index'])->name('backend.clients.index'); // List all clients
+    Route::get('/create', [ClientController::class, 'create'])->name('backend.clients.create'); // Show form to create a new client
+    Route::post('/', [ClientController::class, 'store'])->name('backend.clients.store'); // Store a new client
+    Route::get('/{id}', [ClientController::class, 'show'])->name('backend.clients.show'); // Show a single client
+    Route::get('/{id}/edit', [ClientController::class, 'edit'])->name('backend.clients.edit'); // Show form to edit a client
+    Route::put('/{id}', [ClientController::class, 'update'])->name('backend.clients.update'); // Update a client
+    Route::delete('/{id}', [ClientController::class, 'destroy'])->name('backend.clients.destroy'); // Delete a client
+});
+
+
+//Backend Visitor Message Routes
+Route::prefix('admin/contact-messages')->group(function () {
+    Route::get('/', [ContactusMessageController::class, 'index'])->name('backend.contact-messages.index'); // List all messages
+    Route::get('/{id}', [ContactusMessageController::class, 'show'])->name('backend.contact-messages.show'); // Show a single message
+    Route::delete('/{id}', [ContactusMessageController::class, 'destroy'])->name('backend.contact-messages.destroy'); // Delete a message
+});
+
+//Backend Project Routes
+Route::prefix('projects')->group(function () {
+    Route::get('/', [ProjectController::class, 'index'])->name('projects.index'); // List all projects
+    Route::get('/create', [ProjectController::class, 'create'])->name('projects.create'); // Show form to create a new project
+    Route::post('/', [ProjectController::class, 'store'])->name('projects.store'); // Store a new project
+    Route::get('/{id}', [ProjectController::class, 'show'])->name('projects.show'); // Show a single project
+    Route::get('/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit'); // Show form to edit a project
+    Route::put('/{id}', [ProjectController::class, 'update'])->name('projects.update'); // Update a project
+    Route::delete('/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy'); // Delete a project
+});
 });

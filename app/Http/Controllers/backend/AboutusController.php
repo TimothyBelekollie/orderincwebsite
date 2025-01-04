@@ -43,7 +43,7 @@ class AboutusController extends Controller
 
             $filename=date('YmdHi').$file->getClientOriginalName();// 2223222.png
             $file->move(public_path('images/aboutus'),$filename);
-            $validated['image_path']=$filename;
+            $data['image_path']=$filename;
 
         }
 
@@ -89,14 +89,14 @@ class AboutusController extends Controller
             $file = $request->file('image_path');
 
             // Delete the old image if it exists
-            if ($aboutus->photo && file_exists(public_path('images/aboutus/' . $aboutus->photo))) {
-                @unlink(public_path('images/aboutus/' . $aboutus->photo));
+            if ($aboutus->photo && file_exists(public_path('images/aboutus/' . $aboutus->image_path))) {
+                @unlink(public_path('images/aboutus/' . $aboutus->image_path));
             }
 
             // Save the new image
             $filename = date('YmdHi') . '_' . $file->getClientOriginalName(); // Unique filename
             $file->move(public_path('images/aboutus/'), $filename);
-            $validated['image_path'] = $filename;
+            $data['image_path'] = $filename;
         }
 
 
