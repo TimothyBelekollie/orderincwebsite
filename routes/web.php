@@ -7,6 +7,8 @@ use App\Http\Controllers\backend\BlogController;
 use App\Http\Controllers\backend\CarouselController;
 use App\Http\Controllers\backend\ClientController;
 use App\Http\Controllers\backend\ContactusMessageController;
+use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\UserProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,7 +20,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('backend.layout.main');
     })->name('dashboard');
 
 
@@ -91,13 +93,32 @@ Route::prefix('admin/contact-messages')->group(function () {
 });
 
 //Backend Project Routes
-Route::prefix('projects')->group(function () {
-    Route::get('/', [ProjectController::class, 'index'])->name('projects.index'); // List all projects
-    Route::get('/create', [ProjectController::class, 'create'])->name('projects.create'); // Show form to create a new project
-    Route::post('/', [ProjectController::class, 'store'])->name('projects.store'); // Store a new project
-    Route::get('/{id}', [ProjectController::class, 'show'])->name('projects.show'); // Show a single project
-    Route::get('/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit'); // Show form to edit a project
-    Route::put('/{id}', [ProjectController::class, 'update'])->name('projects.update'); // Update a project
-    Route::delete('/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy'); // Delete a project
+Route::prefix('admin/projects')->group(function () {
+    Route::get('/', [ProjectController::class, 'index'])->name('backend.projects.index'); // List all projects
+    Route::get('/create', [ProjectController::class, 'create'])->name('backend.projects.create'); // Show form to create a new project
+    Route::post('/', [ProjectController::class, 'store'])->name('backend.projects.store'); // Store a new project
+    Route::get('/{id}', [ProjectController::class, 'show'])->name('backend.projects.show'); // Show a single project
+    Route::get('/{id}/edit', [ProjectController::class, 'edit'])->name('backend.projects.edit'); // Show form to edit a project
+    Route::put('/{id}', [ProjectController::class, 'update'])->name('backend.projects.update'); // Update a project
+    Route::delete('/{id}', [ProjectController::class, 'destroy'])->name('backend.projects.destroy'); // Delete a project
 });
+
+Route::prefix('admin/user-profile')->middleware('auth')->group(function () {
+    Route::get('/', [UserProfileController::class, 'show'])->name('backend.user-profile.show'); // Show user profile
+    Route::get('/edit', [UserProfileController::class, 'edit'])->name('backend.user-profile.edit'); // Edit user profile form
+    Route::put('/', [UserProfileController::class, 'update'])->name('backend.user-profile.update'); // Update user profile
+    Route::put('/change-password', [UserProfileController::class, 'changePassword'])->name('backend.user-profile.change-password'); // Change password
+    Route::get('/logout', [UserProfileController::class, 'userlogout'])->name('admin.logout');
+});
+
+
+Route::prefix('admin/users')->middleware('auth', 'is_admin')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('users.index'); // List all users
+    Route::get('/create', [UserController::class, 'create'])->name('users.create'); // Show form to create a new user
+    Route::post('/', [UserController::class, 'store'])->name('users.store'); // Store a new user
+    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit'); // Show form to edit a user
+    Route::put('/{id}', [UserController::class, 'update'])->name('users.update'); // Update user details
+    Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy'); // Delete a user
+});
+
 });
