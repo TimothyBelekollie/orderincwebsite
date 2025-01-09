@@ -65,23 +65,34 @@ class UserProfileController extends Controller
         return redirect()->route('backend.user-profile.show')->with('success', 'Profile updated successfully.');
     }
 
-    // Change the user password
-    public function changePassword(Request $request)
-    {
-        $user = Auth::user();
+    public function changepassword(){
 
-        $request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|min:8|confirmed',
+        return view('backend.user-profile.change_password');
+    }
+
+    // Change the user password
+    public function updatePassword(Request $request)
+    {
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'newpassword' => 'required',
+            'confirm_password' => 'required|same:newpassword',
+
         ]);
 
-        if (!Hash::check($request->current_password, $user->password)) {
-            return redirect()->back()->withErrors(['current_password' => 'Current password is incorrect.']);
+        $hashedPassword = Auth::User()->password;
+        if (Hash::check($request->oldpassword,$hashedPassword )) {
+            $id=Auth::User()->id;
+            $updatepassword=User::find($id);
+            $updatepassword->password = bcrypt($request->newpassword);
+            $updatepassword->save();
+
+            session()->flash('message','Password Updated Successfully');
+            return redirect()->back();
+        } else{
+            session()->flash('message','Old password is not match');
+            return redirect()->back();
         }
-
-        $user->update(['password' => Hash::make($request->new_password)]);
-
-        return redirect()->route('backend.user-profile.show')->with('success', 'Password changed successfully.');
     }
 
     public function userlogout(Request $request){

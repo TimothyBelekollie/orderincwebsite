@@ -107,7 +107,8 @@ Route::prefix('admin/user-profile')->middleware('auth')->group(function () {
     Route::get('/', [UserProfileController::class, 'show'])->name('backend.user-profile.show'); // Show user profile
     Route::get('/edit', [UserProfileController::class, 'edit'])->name('backend.user-profile.edit'); // Edit user profile form
     Route::put('/', [UserProfileController::class, 'update'])->name('backend.user-profile.update'); // Update user profile
-    Route::put('/change-password', [UserProfileController::class, 'changePassword'])->name('backend.user-profile.change-password'); // Change password
+    Route::get('/change-password', [UserProfileController::class, 'changePassword'])->name('backend.user-profile.change-password'); // Change password
+    Route::post('/update-password', [UserProfileController::class, 'updatePassword'])->name('backend.user-profile.update-password'); // Change password
     Route::get('/logout', [UserProfileController::class, 'userlogout'])->name('admin.logout');
 });
 
