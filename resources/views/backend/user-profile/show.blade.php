@@ -3,7 +3,13 @@
  <!-- BEGIN: Content -->
  <div class="max-w-full md:max-w-none rounded-[30px] md:rounded-none px-4 md:px-[22px] min-w-0 min-h-screen bg-slate-100 flex-1 md:pt-20 pb-10 mt-5 md:mt-1 relative dark:bg-darkmode-700 before:content-[''] before:w-full before:h-px before:block">
     <div class="intro-y mt-8 flex items-center">
-        <h2 class="mr-auto text-lg font-medium">Profile Layout</h2>
+        <h2 class="mr-auto text-lg font-medium">{{Auth::user()->name}} Profile</h2>
+
+        @if(session('success'))
+        <div class="alert alert-success" style="color:green;">
+            {{ session('success') }}
+        </div>
+        @endif
     </div>
     <div>
         <!-- BEGIN: Profile Info -->

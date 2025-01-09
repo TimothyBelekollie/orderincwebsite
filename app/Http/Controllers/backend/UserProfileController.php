@@ -65,6 +65,8 @@ class UserProfileController extends Controller
         return redirect()->route('backend.user-profile.show')->with('success', 'Profile updated successfully.');
     }
 
+
+
     public function changepassword(){
 
         return view('backend.user-profile.change_password');
