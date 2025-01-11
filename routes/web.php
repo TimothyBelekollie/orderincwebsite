@@ -103,6 +103,7 @@ Route::prefix('admin/projects')->group(function () {
     Route::delete('/{id}', [ProjectController::class, 'destroy'])->name('backend.projects.destroy'); // Delete a project
 });
 
+
 Route::prefix('admin/user-profile')->middleware('auth')->group(function () {
     Route::get('/', [UserProfileController::class, 'show'])->name('backend.user-profile.show'); // Show user profile
     Route::get('/edit', [UserProfileController::class, 'edit'])->name('backend.user-profile.edit'); // Edit user profile form
@@ -114,12 +115,12 @@ Route::prefix('admin/user-profile')->middleware('auth')->group(function () {
 
 
 Route::prefix('admin/users')->middleware('auth', 'is_admin')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('users.index'); // List all users
-    Route::get('/create', [UserController::class, 'create'])->name('users.create'); // Show form to create a new user
-    Route::post('/', [UserController::class, 'store'])->name('users.store'); // Store a new user
-    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit'); // Show form to edit a user
-    Route::put('/{id}', [UserController::class, 'update'])->name('users.update'); // Update user details
-    Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy'); // Delete a user
+    Route::get('/', [UserController::class, 'index'])->name('backend.users.index'); // List all users
+    Route::get('/create', [UserController::class, 'create'])->name('backend.users.create'); // Show form to create a new user
+    Route::post('/store', [UserController::class, 'store'])->name('backend.users.store'); // Store a new user
+    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('backend.users.edit'); // Show form to edit a user
+    Route::post('/{id}', [UserController::class, 'update'])->name('backend.users.update'); // Update user details
+    Route::get('/{id}', [UserController::class, 'destroy'])->name('backend.users.destroy'); // Delete a user
 });
 
 });
