@@ -80,8 +80,8 @@ Route::prefix('admin/clients')->group(function () {
     Route::post('/', [ClientController::class, 'store'])->name('backend.clients.store'); // Store a new client
     Route::get('/{id}', [ClientController::class, 'show'])->name('backend.clients.show'); // Show a single client
     Route::get('/{id}/edit', [ClientController::class, 'edit'])->name('backend.clients.edit'); // Show form to edit a client
-    Route::put('/{id}', [ClientController::class, 'update'])->name('backend.clients.update'); // Update a client
-    Route::delete('/{id}', [ClientController::class, 'destroy'])->name('backend.clients.destroy'); // Delete a client
+    Route::post('/{id}', [ClientController::class, 'update'])->name('backend.clients.update'); // Update a client
+    Route::get('/{id}', [ClientController::class, 'destroy'])->name('backend.clients.destroy'); // Delete a client
 });
 
 

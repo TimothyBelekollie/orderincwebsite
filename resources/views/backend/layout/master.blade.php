@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="{{asset('backend/dist/css/vendors/simplebar.css')}}">
         <link rel="stylesheet" href="{{asset('backend/dist/css/components/mobile-menu.css')}}">
         <link rel="stylesheet" href="{{asset('backend/dist/css/app.css')}}">
+        <link rel="stylesheet" href="{{asset('backend/dist/css/vendors/tabulator.css')}}">
+
 
         <!-- END: CSS Assets-->
     </head>

@@ -6,209 +6,32 @@
     <div class="my-6 side-nav__divider"></div>
     <ul>
         <li>
-            <a href="javascript:;" class="side-menu side-menu--active">
+            <a href="{{route('backend.users.index')}}" class="side-menu side-menu--active">
                 <div class="side-menu__icon">
                     <i data-tw-merge="" data-lucide="home" class="stroke-1.5 w-5 h-5"></i>
                 </div>
                 <div class="side-menu__title">
-                    Dashboard
+                   User Accounts
                     <div class="side-menu__sub-icon transform rotate-180">
                         <i data-tw-merge="" data-lucide="chevron-down" class="stroke-1.5 w-5 h-5"></i>
                     </div>
                 </div>
             </a>
-            <ul class="side-menu__sub-open">
-                <li>
-                    <a href="rubick-side-menu-dashboard-overview-1-page.html" class="side-menu side-menu--active">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Overview 1
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="rubick-side-menu-dashboard-overview-2-page.html" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Overview 2
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="rubick-side-menu-dashboard-overview-3-page.html" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Overview 3
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="rubick-side-menu-dashboard-overview-4-page.html" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Overview 4
-                        </div>
-                    </a>
-                </li>
-            </ul>
+
         </li>
         <li>
-            <a href="javascript:;" class="side-menu">
+            <a href="{{route('backend.clients.index')}}" class="side-menu">
                 <div class="side-menu__icon">
                     <i data-tw-merge="" data-lucide="shopping-bag" class="stroke-1.5 w-5 h-5"></i>
                 </div>
                 <div class="side-menu__title">
-                    E-Commerce
+                   Client Management
                     <div class="side-menu__sub-icon ">
                         <i data-tw-merge="" data-lucide="chevron-down" class="stroke-1.5 w-5 h-5"></i>
                     </div>
                 </div>
             </a>
-            <ul class="">
-                <li>
-                    <a href="rubick-side-menu-categories-page.html" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Categories
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="rubick-side-menu-add-product-page.html" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Add Product
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Products
-                            <div class="side-menu__sub-icon ">
-                                <i data-tw-merge="" data-lucide="chevron-down" class="stroke-1.5 w-5 h-5"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <ul class="">
-                        <li>
-                            <a href="rubick-side-menu-product-list-page.html" class="side-menu">
-                                <div class="side-menu__icon">
-                                    <i data-tw-merge="" data-lucide="zap" class="stroke-1.5 w-5 h-5"></i>
-                                </div>
-                                <div class="side-menu__title">
-                                    Product List
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="rubick-side-menu-product-grid-page.html" class="side-menu">
-                                <div class="side-menu__icon">
-                                    <i data-tw-merge="" data-lucide="zap" class="stroke-1.5 w-5 h-5"></i>
-                                </div>
-                                <div class="side-menu__title">
-                                    Product Grid
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Transactions
-                            <div class="side-menu__sub-icon ">
-                                <i data-tw-merge="" data-lucide="chevron-down" class="stroke-1.5 w-5 h-5"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <ul class="">
-                        <li>
-                            <a href="rubick-side-menu-transaction-list-page.html" class="side-menu">
-                                <div class="side-menu__icon">
-                                    <i data-tw-merge="" data-lucide="zap" class="stroke-1.5 w-5 h-5"></i>
-                                </div>
-                                <div class="side-menu__title">
-                                    Transaction List
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="rubick-side-menu-transaction-detail-page.html" class="side-menu">
-                                <div class="side-menu__icon">
-                                    <i data-tw-merge="" data-lucide="zap" class="stroke-1.5 w-5 h-5"></i>
-                                </div>
-                                <div class="side-menu__title">
-                                    Transaction Detail
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:;" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Sellers
-                            <div class="side-menu__sub-icon ">
-                                <i data-tw-merge="" data-lucide="chevron-down" class="stroke-1.5 w-5 h-5"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <ul class="">
-                        <li>
-                            <a href="rubick-side-menu-seller-list-page.html" class="side-menu">
-                                <div class="side-menu__icon">
-                                    <i data-tw-merge="" data-lucide="zap" class="stroke-1.5 w-5 h-5"></i>
-                                </div>
-                                <div class="side-menu__title">
-                                    Seller List
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="rubick-side-menu-seller-detail-page.html" class="side-menu">
-                                <div class="side-menu__icon">
-                                    <i data-tw-merge="" data-lucide="zap" class="stroke-1.5 w-5 h-5"></i>
-                                </div>
-                                <div class="side-menu__title">
-                                    Seller Detail
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="rubick-side-menu-reviews-page.html" class="side-menu">
-                        <div class="side-menu__icon">
-                            <i data-tw-merge="" data-lucide="activity" class="stroke-1.5 w-5 h-5"></i>
-                        </div>
-                        <div class="side-menu__title">
-                            Reviews
-                        </div>
-                    </a>
-                </li>
-            </ul>
+
         </li>
         <li>
             <a href="rubick-side-menu-inbox-page.html" class="side-menu">

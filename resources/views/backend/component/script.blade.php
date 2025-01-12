@@ -29,3 +29,4 @@
 <script src="{{asset('backend/dist/js/components/base/leaflet-map-loader.js')}}"></script>
 <script src="{{asset('backend/dist/js/components/mobile-menu.js')}}"></script>
 <script src="{{asset('backend/dist/js/components/themes/rubick/top-bar.js')}}"></script>
+<script src="{{asset('backend/dist/js/pages/tabulator.js')}}"></script>
