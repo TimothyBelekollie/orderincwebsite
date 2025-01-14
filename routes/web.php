@@ -68,8 +68,8 @@ Route::prefix('admin/carousels')->group(function () {
     Route::post('/', [CarouselController::class, 'store'])->name('backend.carousels.store'); // Store a new carousel
     Route::get('/{id}', [CarouselController::class, 'show'])->name('backend.carousels.show'); // Show a single carousel
     Route::get('/{id}/edit', [CarouselController::class, 'edit'])->name('backend.carousels.edit'); // Show form to edit a carousel
-    Route::put('/{id}', [CarouselController::class, 'update'])->name('backend.carousels.update'); // Update a carousel
-    Route::delete('/{id}', [CarouselController::class, 'destroy'])->name('backend.carousels.destroy'); // Delete a carousel
+    Route::post('/{id}', [CarouselController::class, 'update'])->name('backend.carousels.update'); // Update a carousel
+    Route::get('/{id}', [CarouselController::class, 'destroy'])->name('backend.carousels.destroy'); // Delete a carousel
 });
 
 

@@ -34,12 +34,12 @@
 
         </li>
         <li>
-            <a href="rubick-side-menu-inbox-page.html" class="side-menu">
+            <a href="{{route('backend.carousels.index')}}" class="side-menu">
                 <div class="side-menu__icon">
                     <i data-tw-merge="" data-lucide="inbox" class="stroke-1.5 w-5 h-5"></i>
                 </div>
                 <div class="side-menu__title">
-                    Inbox
+                    Carousel Management
                 </div>
             </a>
         </li>

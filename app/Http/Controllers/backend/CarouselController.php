@@ -28,8 +28,8 @@ class CarouselController extends Controller
      $request->validate([
          'title' => 'required|string|max:255',
          'description' => 'required|string',
-         'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-         'is_active' => 'required|boolean',
+         'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+         'is_active' => 'nullable|boolean',
      ]);
 
      $data = $request->all();
@@ -67,49 +67,71 @@ class CarouselController extends Controller
      return view('backend.carousels.edit', compact('carousel'));
  }
 
- // Update the specified resource in storage
+//  // Update the specified resource in storage
+//  public function update(Request $request, $id)
+//  {
+//      $carousel = Carousel::findOrFail($id);
+
+//      $validated = $request->validate([
+//          'title' => 'required|string|max:255',
+//          'description' => 'required|string',
+//          'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//          'is_active' => 'nullable|boolean',
+//      ]);
+
+//      $carousel->title = $validated['title'];
+//      $carousel->description = $validated['description'];
+//      $carousel->is_active = $request->has('is_active') ? $validated['is_active'] : false;
+
+//      if ($file = $request->file('image_path')) {
+//          if ($carousel->image_path && file_exists(public_path('images/carousels/' . $carousel->image_path))) {
+//              @unlink(public_path('images/carousels/' . $carousel->image_path));
+//          }
+
+//          $filename = date('YmdHi') . '_' . $file->getClientOriginalName();
+//          $file->move(public_path('images/carousels'), $filename);
+//          $carousel->image_path = $filename;
+//      }
+
+//      $carousel->save();
+
+//      return redirect()->route('backend.carousels.index')->with('success', 'Carousel updated successfully.');
+//  }
+
  public function update(Request $request, $id)
  {
      $carousel = Carousel::findOrFail($id);
 
-     $request->validate([
+     $validated = $request->validate([
          'title' => 'required|string|max:255',
          'description' => 'required|string',
-         'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-         'is_active' => 'required|boolean',
+         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3048',
      ]);
 
-     $data = $request->all();
+
 
      // Handle image upload
-     if ($request->hasFile('image_path')) {
-         // Delete old image if exists
-         if ($carousel->image_path) {
-             \Storage::disk('public')->delete($carousel->image_path);
-         }
+ if ($request->file('image_path')) {
+     $file = $request->file('image_path');
 
-         $data['image_path'] = $request->file('image_path')->store('images/carousels', 'public');
+     // Delete the old image if it exists
+     if ($carousel->image_path && file_exists(public_path('images/carousels/' . $carousel->image_path))) {
+         @unlink(public_path('images/carousels/' . $carousel->image));
      }
 
-
-     if ($request->file('image_path')) {
-        $file = $request->file('image_path');
-
-        // Delete the old image if it exists
-        if ($aboutus->photo && file_exists(public_path('images/carousels' . $$carousel->image_path))) {
-            @unlink(public_path('images/carousels' . $$carousel->image_path));
-        }
-
-        // Save the new image
-        $filename = date('YmdHi') . '_' . $file->getClientOriginalName(); // Unique filename
-        $file->move(public_path('images/carousels'), $filename);
-        $data['image_path'] = $filename;
-    }
-
-     $carousel->update($data);
-
-     return redirect()->route('backend.carousels.index')->with('success', 'Carousel updated successfully.');
+     // Save the new image
+     $filename = date('YmdHi') . $file->getClientOriginalName(); // e.g., 20241120_image.png
+     $file->move(public_path('images/carousels'), $filename);
+     $validated['image_path'] = $filename; // Corrected this line
  }
+
+
+     $carousel->update($validated);
+
+     return redirect()->route('backend.carousels.index')->with('success', 'Carousel items updated successfully.');
+ }
+
+
 
  // Remove the specified resource from storage
  public function destroy($id)
@@ -118,7 +140,7 @@ class CarouselController extends Controller
 
      // Delete associated image if exists
 
-     if ($aboutus->image_path) {
+     if ($carousel->image_path) {
 
         @unlink(public_path('images/carousels/'.$carousel->image_path));
     }
